@@ -194,7 +194,7 @@ struct EditorButton {
             }
         }
         
-        init?(rawValue: String, info: SectionEditorButton.Info? = nil) {
+        init?(rawValue: String, info: EditorButton.Info? = nil) {
             if rawValue == "li", let ordered = info?.ordered {
                 self = .li(ordered: ordered)
             } else if rawValue == "heading", let textStyleType = info?.textStyleType {

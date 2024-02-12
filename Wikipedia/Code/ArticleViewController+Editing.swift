@@ -223,7 +223,7 @@ extension ArticleViewController: ShortDescriptionControllerDelegate {
 }
 
 extension ArticleViewController: SectionEditorViewControllerDelegate {
-    func sectionEditorDidFinishEditing(_ sectionEditor: SectionEditorViewController, result: Result<SectionEditorChanges, Error>) {
+    func sectionEditorDidFinishEditing(_ sectionEditor: SectionEditorViewController, result: Result<EditorChanges, Error>) {
         switch result {
         case .failure(let error):
             showError(error)
