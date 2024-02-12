@@ -1,6 +1,6 @@
 import Foundation
 
-struct SectionEditorButton {
+struct EditorButton {
     enum Kind: Equatable {
         case li(ordered: Bool)
         case heading(type: TextStyleType)
