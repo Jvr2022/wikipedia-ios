@@ -6,7 +6,7 @@ import WKData
 
 protocol PageEditorViewControllerDelegate: AnyObject {
     func pageEditorDidCancelEditing(_ pageEditor: PageEditorViewController, navigateToURL url: URL?)
-    func pageEditorDidFinishEditing(_ pageEditor: PageEditorViewController, result: Result<SectionEditorChanges, Error>)
+    func pageEditorDidFinishEditing(_ pageEditor: PageEditorViewController, result: Result<EditorChanges, Error>)
 }
 
 final class PageEditorViewController: UIViewController {
@@ -915,7 +915,7 @@ extension PageEditorViewController: EditPreviewViewControllerDelegate {
 // MARK: - EditSaveViewControllerDelegate
 
 extension PageEditorViewController: EditSaveViewControllerDelegate {
-    func editSaveViewControllerDidSave(_ editSaveViewController: EditSaveViewController, result: Result<SectionEditorChanges, Error>) {
+    func editSaveViewControllerDidSave(_ editSaveViewController: EditSaveViewController, result: Result<EditorChanges, Error>) {
         delegate?.pageEditorDidFinishEditing(self, result: result)
     }
 

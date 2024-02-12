@@ -4,12 +4,12 @@ import WMF
 import Components
 import WKData
 
-struct SectionEditorChanges {
+struct EditorChanges {
     let newRevisionID: UInt64
 }
 
 protocol EditSaveViewControllerDelegate: NSObjectProtocol {
-    func editSaveViewControllerDidSave(_ editSaveViewController: EditSaveViewController, result: Result<SectionEditorChanges, Error>)
+    func editSaveViewControllerDidSave(_ editSaveViewController: EditSaveViewController, result: Result<EditorChanges, Error>)
     func editSaveViewControllerWillCancel(_ saveData: EditSaveViewController.SaveData)
     func editSaveViewControllerDidTapShowWebPreview()
 }
@@ -328,7 +328,7 @@ class EditSaveViewController: WMFScrollViewController, Themeable, UITextFieldDel
     }
     
     private func handleEditSuccess(with result: [AnyHashable: Any]) {
-        let notifyDelegate: (Result<SectionEditorChanges, Error>) -> Void = { result in
+        let notifyDelegate: (Result<EditorChanges, Error>) -> Void = { result in
             DispatchQueue.main.async {
                 self.delegate?.editSaveViewControllerDidSave(self, result: result)
             }
@@ -353,7 +353,7 @@ class EditSaveViewController: WMFScrollViewController, Themeable, UITextFieldDel
             EditAttemptFunnel.shared.logSaveSuccess(pageURL: pageURL, revisionId: Int(newRevID))
         }
         
-        notifyDelegate(.success(SectionEditorChanges(newRevisionID: newRevID)))
+        notifyDelegate(.success(EditorChanges(newRevisionID: newRevID)))
     }
     
     private func handleEditFailure(with error: Error) {
