@@ -36,7 +36,7 @@ class EditSaveViewController: WMFScrollViewController, Themeable, UITextFieldDel
     var pageURL: URL?
     var languageCode: String?
     var dataStore: MWKDataStore?
-    var source: PageEditorViewController.Source?
+    var source: EditorViewController.Source?
     
     var wikitext = ""
     var theme: Theme = .standard
